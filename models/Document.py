@@ -1,5 +1,6 @@
 from datetime import datetime
 from models.db import db
+from sqlalchemy.orm import relationship
 
 
 class Document(db.Model):
@@ -44,6 +45,13 @@ class Document(db.Model):
         nullable=False,
         default=datetime.now()
     )
+
+    MultiProject_Id = db.Column(
+        db.ForeignKey('MultiProjects.Id'),
+        index=True
+    )
+
+    MultiProject = relationship('MultiProject')
 
     def to_json(self):
         return {
