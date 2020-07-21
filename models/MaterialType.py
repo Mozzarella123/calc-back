@@ -9,8 +9,8 @@ class MaterialType(db.Model):
     Name = db.Column(db.Unicode)
     GUID = db.Column(db.Unicode)
     Unit = db.Column(db.Unicode)
-    Formula_Id = db.Column(db.ForeignKey('Formula.Id'), index=True)
-    WorkType_Id = db.Column(db.ForeignKey('WorkType.Id'), index=True)
+    Formula_Id = db.Column(db.ForeignKey('Formulae.Id'), index=True)
+    WorkType_Id = db.Column(db.ForeignKey('WorkTypes.Id'), index=True)
 
     Formula = relationship('Formula')
     WorkType = relationship('WorkType')

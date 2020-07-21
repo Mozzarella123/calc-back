@@ -14,6 +14,6 @@ class WorkType(db.Model):
     Order = db.Column(db.Integer, nullable=False)
     Description = db.Column(db.Unicode)
     MaterialsCount = db.Column(db.Unicode)
-    Formula_Id = db.Column(db.ForeignKey('Formula.Id'), index=True)
+    Formula_Id = db.Column(db.ForeignKey('Formulae.Id'), index=True)
 
     Formula = relationship('Formula')
