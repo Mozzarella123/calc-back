@@ -14,7 +14,7 @@ api = Api(app=app)
 api.add_resource(DocumentResource, '/document')
 
 with app.app_context():
-    #db.create_scoped_session().query(Document).all()
+    db.create_scoped_session().query(Document).all()
     migrate = Migrate(app, db)
 
 

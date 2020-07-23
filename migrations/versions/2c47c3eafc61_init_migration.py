@@ -21,7 +21,7 @@ def upgrade():
     op.create_table('Categories',
     sa.Column('Id', sa.Integer(), nullable=False),
     sa.Column('Order', sa.Integer(), nullable=False),
-    sa.Column('Name', sa.Unicode(), nullable=True),
+    sa.Column('Name', sa.Text(), nullable=True),
     sa.Column('Parent_Id', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['Parent_Id'], ['Categories.Id'], ),
     sa.PrimaryKeyConstraint('Id')
@@ -29,43 +29,43 @@ def upgrade():
     op.create_index(op.f('ix_Categories_Parent_Id'), 'Categories', ['Parent_Id'], unique=False)
     op.create_table('ElementTypes',
     sa.Column('Id', sa.Integer(), nullable=False),
-    sa.Column('Name', sa.Unicode(), nullable=True),
+    sa.Column('Name', sa.Text(), nullable=True),
     sa.Column('Category', sa.Integer(), nullable=False),
     sa.PrimaryKeyConstraint('Id')
     )
     op.create_table('MultiProjects',
     sa.Column('Id', sa.Integer(), nullable=False),
-    sa.Column('Name', sa.Unicode(), nullable=True),
+    sa.Column('Name', sa.Text(), nullable=True),
     sa.PrimaryKeyConstraint('Id')
     )
     op.create_table('Parameters',
     sa.Column('Id', sa.Integer(), nullable=False),
-    sa.Column('Name', sa.Unicode(), nullable=True),
+    sa.Column('Name', sa.Text(), nullable=True),
     sa.Column('Type', sa.Integer(), nullable=False),
     sa.PrimaryKeyConstraint('Id')
     )
     op.create_table('RoomTypes',
     sa.Column('Id', sa.Integer(), nullable=False),
-    sa.Column('Name', sa.Unicode(), nullable=True),
-    sa.Column('GUID', sa.Unicode(), nullable=True),
+    sa.Column('Name', sa.Text(), nullable=True),
+    sa.Column('GUID', sa.Text(), nullable=True),
     sa.Column('Image', sa.Binary(), nullable=True),
     sa.PrimaryKeyConstraint('Id')
     )
     op.create_table('Tags',
     sa.Column('Id', sa.Integer(), nullable=False),
-    sa.Column('Name', sa.Unicode(), nullable=True),
+    sa.Column('Name', sa.Text(), nullable=True),
     sa.PrimaryKeyConstraint('Id')
     )
     op.create_table('Templates',
     sa.Column('Id', sa.Integer(), nullable=False),
-    sa.Column('Name', sa.Unicode(), nullable=True),
-    sa.Column('Content', sa.Unicode(), nullable=True),
+    sa.Column('Name', sa.Text(), nullable=True),
+    sa.Column('Content', sa.Text(), nullable=True),
     sa.PrimaryKeyConstraint('Id')
     )
     op.create_table('Documents',
     sa.Column('Id', sa.Integer(), nullable=False),
-    sa.Column('Name', sa.Unicode(), nullable=False),
-    sa.Column('Json', sa.Unicode(), nullable=False),
+    sa.Column('Name', sa.Text(), nullable=False),
+    sa.Column('Json', sa.Text(), nullable=False),
     sa.Column('DocumentType', sa.Integer(), nullable=False),
     sa.Column('DateCreated', sa.DateTime(), nullable=False),
     sa.Column('DateModified', sa.DateTime(), nullable=False),
@@ -76,7 +76,7 @@ def upgrade():
     op.create_index(op.f('ix_Documents_MultiProject_Id'), 'Documents', ['MultiProject_Id'], unique=False)
     op.create_table('Formulae',
     sa.Column('Id', sa.Integer(), nullable=False),
-    sa.Column('Expression', sa.Unicode(), nullable=True),
+    sa.Column('Expression', sa.Text(), nullable=True),
     sa.Column('Type', sa.Integer(), nullable=False),
     sa.Column('ElementType_Id', sa.Integer(), nullable=True),
     sa.Column('RoomType_Id', sa.Integer(), nullable=True),
@@ -88,8 +88,8 @@ def upgrade():
     op.create_index(op.f('ix_Formulae_RoomType_Id'), 'Formulae', ['RoomType_Id'], unique=False)
     op.create_table('TemplateBlocks',
     sa.Column('Id', sa.Integer(), nullable=False),
-    sa.Column('Name', sa.Unicode(), nullable=True),
-    sa.Column('Content', sa.Unicode(), nullable=True),
+    sa.Column('Name', sa.Text(), nullable=True),
+    sa.Column('Content', sa.Text(), nullable=True),
     sa.Column('Order', sa.Integer(), nullable=False),
     sa.Column('TemplateBlockType', sa.Integer(), nullable=False),
     sa.Column('Template_Id', sa.Integer(), nullable=True),
@@ -108,14 +108,14 @@ def upgrade():
     op.create_index(op.f('ix_ParameterFormulas_Parameter_Id'), 'ParameterFormulas', ['Parameter_Id'], unique=False)
     op.create_table('WorkTypes',
     sa.Column('Id', sa.Integer(), nullable=False),
-    sa.Column('GUID', sa.Unicode(), nullable=True),
-    sa.Column('Name', sa.Unicode(), nullable=True),
+    sa.Column('GUID', sa.Text(), nullable=True),
+    sa.Column('Name', sa.Text(), nullable=True),
     sa.Column('PriceValue', sa.Float(), nullable=False),
     sa.Column('Salary', sa.Float(), nullable=False),
     sa.Column('Time', sa.Float(), nullable=False),
     sa.Column('Order', sa.Integer(), nullable=False),
-    sa.Column('Description', sa.Unicode(), nullable=True),
-    sa.Column('MaterialsCount', sa.Unicode(), nullable=True),
+    sa.Column('Description', sa.Text(), nullable=True),
+    sa.Column('MaterialsCount', sa.Text(), nullable=True),
     sa.Column('Formula_Id', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['Formula_Id'], ['Formulae.Id'], ),
     sa.PrimaryKeyConstraint('Id')
@@ -123,9 +123,9 @@ def upgrade():
     op.create_index(op.f('ix_WorkTypes_Formula_Id'), 'WorkTypes', ['Formula_Id'], unique=False)
     op.create_table('MaterialTypes',
     sa.Column('Id', sa.Integer(), nullable=False),
-    sa.Column('Name', sa.Unicode(), nullable=True),
-    sa.Column('GUID', sa.Unicode(), nullable=True),
-    sa.Column('Unit', sa.Unicode(), nullable=True),
+    sa.Column('Name', sa.Text(), nullable=True),
+    sa.Column('GUID', sa.Text(), nullable=True),
+    sa.Column('Unit', sa.Text(), nullable=True),
     sa.Column('Formula_Id', sa.Integer(), nullable=True),
     sa.Column('WorkType_Id', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['Formula_Id'], ['Formulae.Id'], ),

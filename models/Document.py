@@ -46,10 +46,18 @@ class Document(db.Model):
         default=datetime.now()
     )
 
+    address = db.Column(
+        db.Unicode,
+        name="Address",
+        nullable=True
+    )
+
     MultiProject_Id = db.Column(
         db.ForeignKey('MultiProjects.Id'),
         index=True
     )
+
+    rooms = db.relationship('Room', back_populates='document')
 
     MultiProject = relationship('MultiProject')
 

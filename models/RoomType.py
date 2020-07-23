@@ -4,8 +4,26 @@ from models.db import db
 class RoomType(db.Model):
     __tablename__ = 'RoomTypes'
 
-    Id = db.Column(db.Integer, primary_key=True)
-    Name = db.Column(db.Unicode)
-    GUID = db.Column(db.Unicode)
-    Image = db.Column(db.Binary)
+    id = db.Column(
+        db.Integer,
+        name='Id',
+        primary_key=True
+    )
+
+    name = db.Column(
+        db.Unicode,
+        name='Name'
+    )
+
+    guid = db.Column(
+        db.Unicode,
+        name='GUID'
+    )
+
+    image = db.Column(
+        db.Binary,
+        name='Image'
+    )
+
+    formulas = db.relationship('Formula', back_populates='room_type')
     

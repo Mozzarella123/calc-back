@@ -7,3 +7,5 @@ class ElementType(db.Model):
     Id = db.Column(db.Integer, primary_key=True)
     Name = db.Column(db.Unicode)
     Category = db.Column(db.Integer, nullable=False)
+
+    

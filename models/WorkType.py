@@ -15,5 +15,6 @@ class WorkType(db.Model):
     Description = db.Column(db.Unicode)
     MaterialsCount = db.Column(db.Unicode)
     Formula_Id = db.Column(db.ForeignKey('Formulae.Id'), index=True)
+    Formula = db.relationship('Formula')
 
     Formula = relationship('Formula')

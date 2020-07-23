@@ -12,4 +12,13 @@ from models.TagWorkTypes import t_TagWorkTypes
 from models.Template import Template
 from models.TemplateBlock import TemplateBlock
 from models.WorkType import WorkType
+from models.ParameterValue import ParameterValue
 from models.WorkTypeCategories import t_WorkTypeCategories
+from models.ElementParameterValue import t_ElementParameterValue
+from models.WorkParameterValue import t_WorkParameterValue
+from models.RoomParamterValue import t_RoomParameterValue
+from models.RoomElement import t_RoomElement
+from models.RoomWork import t_RoomWork
+from models.Work import Work
+from models.Element import Element
+from models.Room import Room

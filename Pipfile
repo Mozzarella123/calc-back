@@ -7,12 +7,12 @@ verify_ssl = true
 
 [packages]
 flask = "*"
-pysqlite = "*"
 flask-sqlalchemy = "*"
 flask-expects-json = "*"
 flask-jwt-extended = "*"
 flask-restful = "*"
 Flask-Migrate = "*"
+mysqlclient = "*"
 
 [requires]
-python_version = "3.7"
+python_version = "3.6"

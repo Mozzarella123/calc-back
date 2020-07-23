@@ -1,9 +1,41 @@
 from models.db import db
+from enum import Enum
+from util.IntEnum import IntEnum
+
+
+class ParameterType(Enum):
+    Default = 0
+    BottomPerimeter = 1
+    TopPerimetr = 2
+    TopArea = 3
+    BottomArea = 4
+    CommonArea = 5
+    WallArea = 6
+    Price = 7
+    ClearBottomPerimeter = 8
+    ClearTopPerimeter = 9
+    ClearTopArea = 10
+    ClearBottomArea = 11
+    ClearCommonArea = 12
+    ClearWallArea = 13
 
 
 class Parameter(db.Model):
     __tablename__ = 'Parameters'
 
-    Id = db.Column(db.Integer, primary_key=True)
-    Name = db.Column(db.Unicode)
-    Type = db.Column(db.Integer, nullable=False)
+    id = db.Column(
+        db.Integer,
+        name='Id',
+        primary_key=True
+    )
+
+    name = db.Column(
+        db.Unicode,
+        name='Name'
+    )
+
+    type = db.Column(
+        IntEnum(ParameterType),
+        name='Type',
+        nullable=False
+    )
