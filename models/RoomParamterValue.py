@@ -1,18 +1,18 @@
 from models.db import db
 
 t_RoomParameterValue = db.Table(
-    'RoomParameterValue',
+    'ParameterWithValueRooms',
     db.metadata,
     db.Column(
-        'RoomId',
-        db.ForeignKey('Rooms.Id', ondelete='CASCADE'),
+        'ParameterWithValue_Id',
+        db.ForeignKey('ParameterWithValues.Id', ondelete='CASCADE'),
         primary_key=True,
         nullable=False,
         index=True
     ),
     db.Column(
-        'ParameterValueId',
-        db.ForeignKey('ParameterValues.Id', ondelete='CASCADE'),
+        'Room_Id',
+        db.ForeignKey('Rooms.Id', ondelete='CASCADE'),
         primary_key=True,
         nullable=False,
         index=True

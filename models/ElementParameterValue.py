@@ -1,18 +1,18 @@
 from models.db import db
 
 t_ElementParameterValue = db.Table(
-    'ElementParameterValue',
+    'ParameterWithValueElements',
     db.metadata,
     db.Column(
-        'ElementId',
-        db.ForeignKey('Elements.Id', ondelete='CASCADE'),
+        'ParameterWithValue_Id',
+        db.ForeignKey('ParameterWithValues.Id', ondelete='CASCADE'),
         primary_key=True,
         nullable=False,
         index=True
     ),
     db.Column(
-        'ParameterValueId',
-        db.ForeignKey('ParameterValues.Id', ondelete='CASCADE'),
+        'Element_Id',
+        db.ForeignKey('Elements.Id', ondelete='CASCADE'),
         primary_key=True,
         nullable=False,
         index=True

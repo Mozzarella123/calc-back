@@ -26,6 +26,23 @@ class Element(db.Model):
         nullable=False
     )
 
+    room_id = db.Column(
+        db.Integer,
+        db.ForeignKey("Rooms.Id"),
+        name="Room_Id",
+        nullable=False
+    )
+
     type = relationship("ElementType")
 
-    parameter_values = relationship('ParameterValue', secondary='ElementParameterValue')
+    room = relationship("Room")
+
+    parameter_values = relationship('ParameterValue', secondary='ParameterWithValueElements')
+
+    def to_json(self):
+        return {
+            'id': self.id,
+            'count': self.count,
+            'elementType': self.type,
+            'parameterValues': self.parameter_values
+        }

@@ -31,25 +31,6 @@ class Work(db.Model):
         nullable=True
     )
 
-    report_salary_sum = db.Column(
-        db.Float,
-        name='ReportSalarySum',
-        nullable=False
-    )
-
-    report_salary = db.Column(
-        db.Float,
-        name='ReportSalary',
-        nullable=False
-    )
-
-    is_price_manual = db.Column(
-        db.Boolean,
-        name='IsPriceManual',
-        nullable=False,
-        default=False
-    )
-
     price_value = db.Column(
         db.Float,
         name='PriceValue',
@@ -63,6 +44,26 @@ class Work(db.Model):
         nullable=False
     )
 
+    room_id = db.Column(
+        db.Integer,
+        db.ForeignKey('Rooms.Id'),
+        name='ParentRoom_Id',
+        nullable=False
+    )
+
     type = db.relationship('WorkType')
 
-    parameter_values = db.relationship('ParameterValue', secondary='WorkParameterValue')
+    parameter_values = db.relationship('ParameterValue', secondary='WorkParameterWithValues')
+
+    room = db.relationship('Room')
+
+    def to_json(self):
+        return {
+            'id': self.id,
+            'isVolumeManual': self.is_volume_manual,
+            'volume': self.volume,
+            'worker': self.worker,
+            'priceValue': self.price_value,
+            'parameterValues': self.parameter_values,
+            'workType': self.type
+        }

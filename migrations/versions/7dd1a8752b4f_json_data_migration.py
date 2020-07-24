@@ -24,7 +24,7 @@ from models.Formula import Formula, FormulaType
 
 # revision identifiers, used by Alembic.
 revision = '7dd1a8752b4f'
-down_revision = '3d419d417967'
+down_revision = 'c54ff6fc0d07'
 branch_labels = None
 depends_on = None
 
@@ -161,7 +161,14 @@ def upgrade():
                     worker=work.get('Worker', None),
                     report_salary=work.get('ReportSalary', 0),
                     report_salary_sum=work.get('ReportSalarySum', 0),
-                    price_value=work['PriceValue']
+                    price_value=work['PriceValue'],
+                    parameter_values=list(map(lambda p: ParameterValue(
+                        value=p['Value'],
+                        parameter=Parameter(
+                            name=p['Parameter']['Name'],
+                            type=ParameterType[p['Parameter']['Type']]
+                        )
+                    ), work['Parametrs']))
                 ))
 
             params = []

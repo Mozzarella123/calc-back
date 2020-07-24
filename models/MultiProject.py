@@ -4,5 +4,21 @@ from models.db import db
 class MultiProject(db.Model):
     __tablename__ = 'MultiProjects'
 
-    Id = db.Column(db.Integer, primary_key=True)
-    Name = db.Column(db.Unicode)
+    id = db.Column(
+        db.Integer,
+        name='Id',
+        primary_key=True
+    )
+
+    name = db.Column(
+        db.Unicode,
+        name='Name'
+    )
+
+    documents = db.relationship('Document')
+
+    def to_json(self):
+        return {
+            'id': self.id,
+            'name': self.name
+        }

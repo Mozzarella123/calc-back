@@ -1,18 +1,18 @@
 from models.db import db
 
 t_WorkParameterValue = db.Table(
-    'WorkParameterValue',
+    'WorkParameterWithValues',
     db.metadata,
     db.Column(
-        'WorkId',
+        'Work_Id',
         db.ForeignKey('Works.Id', ondelete='CASCADE'),
         primary_key=True,
         nullable=False,
         index=True
     ),
     db.Column(
-        'ParameterValueId',
-        db.ForeignKey('ParameterValues.Id', ondelete='CASCADE'),
+        'ParameterWithValue_Id',
+        db.ForeignKey('ParameterWithValues.Id', ondelete='CASCADE'),
         primary_key=True,
         nullable=False,
         index=True

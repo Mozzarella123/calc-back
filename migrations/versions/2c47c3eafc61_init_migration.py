@@ -65,7 +65,6 @@ def upgrade():
     op.create_table('Documents',
     sa.Column('Id', sa.Integer(), nullable=False),
     sa.Column('Name', sa.Text(), nullable=False),
-    sa.Column('Json', sa.Text(), nullable=False),
     sa.Column('DocumentType', sa.Integer(), nullable=False),
     sa.Column('DateCreated', sa.DateTime(), nullable=False),
     sa.Column('DateModified', sa.DateTime(), nullable=False),

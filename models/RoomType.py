@@ -26,4 +26,12 @@ class RoomType(db.Model):
     )
 
     formulas = db.relationship('Formula', back_populates='room_type')
+
+    def to_json(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'guid': self.guid,
+            'formulas': self.formulas
+        }
     

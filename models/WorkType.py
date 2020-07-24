@@ -5,16 +5,76 @@ from sqlalchemy.orm import relationship
 class WorkType(db.Model):
     __tablename__ = 'WorkTypes'
 
-    Id = db.Column(db.Integer, primary_key=True)
-    GUID = db.Column(db.Unicode)
-    Name = db.Column(db.Unicode)
-    PriceValue = db.Column(db.Float, nullable=False)
-    Salary = db.Column(db.Float, nullable=False)
-    Time = db.Column(db.Float, nullable=False)
-    Order = db.Column(db.Integer, nullable=False)
-    Description = db.Column(db.Unicode)
-    MaterialsCount = db.Column(db.Unicode)
-    Formula_Id = db.Column(db.ForeignKey('Formulae.Id'), index=True)
-    Formula = db.relationship('Formula')
+    id = db.Column(
+        db.Integer,
+        name='Id',
+        primary_key=True
+    )
 
-    Formula = relationship('Formula')
+    guid = db.Column(
+        db.Unicode,
+        name='GUID'
+    )
+
+    name = db.Column(
+        db.Unicode,
+        name='Name'
+    )
+
+    price_value = db.Column(
+        db.Float,
+        name='PriceValue',
+        nullable=False
+    )
+
+    salary = db.Column(
+        db.Float,
+        name='Salary',
+        nullable=False
+    )
+
+    time = db.Column(
+        db.Float,
+        name='Time',
+        nullable=False
+    )
+
+    order = db.Column(
+        db.Integer,
+        name='Order',
+        nullable=False
+    )
+
+    description = db.Column(
+        db.Unicode,
+        name='Description'
+    )
+
+    materials_count = db.Column(
+        db.Unicode,
+        name='MaterialsCount'
+    )
+
+    formula_id = db.Column(
+        db.ForeignKey('Formulae.Id'),
+        name='Formula_Id',
+        index=True
+    )
+
+    formula = db.relationship('Formula')
+
+    def to_json(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'GUID': self.guid,
+            'priceValue': self.price_value,
+            'salary': self.salary,
+            'time': self.time,
+            'order': self.order,
+            'descriptions': self.description,
+            'materialsCount': self.materials_count,
+            'formula': self.formula
+        }
+
+

@@ -39,3 +39,10 @@ class Parameter(db.Model):
         name='Type',
         nullable=False
     )
+
+    def to_json(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'type': str(self.type)
+        }

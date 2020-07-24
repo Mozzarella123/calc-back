@@ -4,7 +4,7 @@ from sqlalchemy.orm import relationship
 
 class ParameterValue(db.Model):
 
-    __tablename__ = "ParameterValues"
+    __tablename__ = "ParameterWithValues"
 
     id = db.Column(
         db.Integer,
@@ -26,3 +26,10 @@ class ParameterValue(db.Model):
     )
 
     parameter = relationship("Parameter")
+
+    def to_json(self):
+        return {
+            'id': self.id,
+            'parameter': self.parameter,
+            'value': self.value
+        }

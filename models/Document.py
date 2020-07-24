@@ -20,12 +20,6 @@ class Document(db.Model):
         nullable=False
     )
 
-    json = db.Column(
-        db.Unicode,
-        name="Json",
-        nullable=False
-    )
-
     type = db.Column(
         db.Integer,
         name="DocumentType",
@@ -46,12 +40,6 @@ class Document(db.Model):
         default=datetime.now()
     )
 
-    address = db.Column(
-        db.Unicode,
-        name="Address",
-        nullable=True
-    )
-
     MultiProject_Id = db.Column(
         db.ForeignKey('MultiProjects.Id'),
         index=True
@@ -61,8 +49,17 @@ class Document(db.Model):
 
     MultiProject = relationship('MultiProject')
 
-    def to_json(self):
+    def to_view_json(self):
         return {
             'id': self.id,
             'name': self.name
+        }
+
+    def to_json(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'dateCreated': str(self.date_created),
+            'dateModified': str(self.date_modified),
+            'rooms': self.rooms
         }

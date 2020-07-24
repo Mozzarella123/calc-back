@@ -1,9 +1,9 @@
 from flask_restful import Resource
-from models.Document import Document
+from models.MultiProject import MultiProject
 from util.json import output_json
 
 
-class DocumentResource(Resource):
+class ProjectResource(Resource):
 
     def __init__(self):
         self.representations = {
@@ -11,6 +11,4 @@ class DocumentResource(Resource):
         }
 
     def get(self):
-        docs = Document.query.all()
-        return docs
-
+        return MultiProject.query.all()

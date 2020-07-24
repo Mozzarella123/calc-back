@@ -48,3 +48,11 @@ class Formula(db.Model):
     element_type = relationship('ElementType')
     room_type = relationship('RoomType', back_populates='formulas')
     parameters = relationship('Parameter', secondary='ParameterFormulas')
+
+    def to_json(self):
+        return {
+            'id': self.id,
+            'expression': self.expression,
+            'type': str(self.type),
+            'parameters': self.parameters
+        }
