@@ -13,6 +13,9 @@ from models.Template import Template
 from models.TemplateBlock import TemplateBlock
 from models.WorkType import WorkType
 from models.ParameterValue import ParameterValue
+from models.User import User
+from models.Role import Role
+from models.UserRole import UserRole
 from models.WorkTypeCategories import t_WorkTypeCategories
 from models.ElementParameterValue import t_ElementParameterValue
 from models.WorkParameterValue import t_WorkParameterValue
