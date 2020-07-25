@@ -11,6 +11,7 @@ flask-sqlalchemy = "*"
 flask-expects-json = "*"
 flask-jwt-extended = "*"
 flask-restful = "*"
+flask-bcrypt = "*"
 Flask-Migrate = "*"
 mysqlclient = "*"
 
