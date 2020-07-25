@@ -44,5 +44,5 @@ class Parameter(db.Model):
         return {
             'id': self.id,
             'name': self.name,
-            'type': str(self.type)
+            'type': str(self.type.name)
         }

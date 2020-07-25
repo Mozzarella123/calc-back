@@ -53,6 +53,6 @@ class Formula(db.Model):
         return {
             'id': self.id,
             'expression': self.expression,
-            'type': str(self.type),
+            'type': str(self.type.name),
             'parameters': self.parameters
         }
