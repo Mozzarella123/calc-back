@@ -3,6 +3,11 @@ from models.db import db
 from resources.documents_list import DocumentsListResource
 from resources.projects import ProjectResource
 from resources.document import DocumentResource
+from resources.work_type import WorkTypeResource
+from resources.element_type import ElementTypeResource
+from resources.category import CategoryResource
+from resources.room_type import RoomTypeResource
+from resources.tag import TagResource
 from routes.auth import auth_blueprint
 from flask_restful import Api
 from flask_migrate import Migrate
@@ -18,6 +23,11 @@ api = Api(app=app, prefix='/api')
 api.add_resource(DocumentsListResource, '/projects/<int:project_id>/documents')
 api.add_resource(ProjectResource, '/projects')
 api.add_resource(DocumentResource, '/documents/<int:document_id>')
+api.add_resource(WorkTypeResource, '/workTypes')
+api.add_resource(ElementTypeResource, '/elementTypes')
+api.add_resource(RoomTypeResource, '/roomTypes')
+api.add_resource(CategoryResource, '/categories')
+api.add_resource(TagResource, '/tags')
 
 app.register_blueprint(auth_blueprint, url_prefix='/api')
 

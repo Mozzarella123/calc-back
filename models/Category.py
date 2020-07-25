@@ -12,3 +12,12 @@ class Category(db.Model):
 
     parent = relationship('Category', remote_side=[Id])
     WorkTypes = relationship('WorkType', secondary='WorkTypeCategories')
+
+    def to_json(self):
+        return {
+            'id': self.Id,
+            'order': self.Order,
+            'name': self.Name,
+            'parentId': self.Parent_Id,
+            'workTypes': list(map(lambda wt: wt.id, self.WorkTypes))
+        }

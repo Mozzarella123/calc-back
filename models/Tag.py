@@ -9,3 +9,10 @@ class Tag(db.Model):
     Name = db.Column(db.Unicode)
 
     WorkTypes = relationship('WorkType', secondary='TagWorkTypes')
+
+    def to_json(self):
+        return {
+            'id': self.Id,
+            'name': self.Name,
+            'workTypes': list(map(lambda wt: wt.id, self.WorkTypes))
+        }
