@@ -59,9 +59,9 @@ class Room(db.Model):
             'id': self.id,
             'name': self.name,
             'factor': self.factor,
-            'salary_factor': self.salary_factor,
+            'salaryFactor': self.salary_factor,
             'type': self.room_type,
-            'parameterValues': self.parameter_values,
+            'parameters': self.parameter_values,
             'works': self.works,
             'elements': self.elements
         }

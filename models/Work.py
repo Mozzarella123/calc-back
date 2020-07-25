@@ -64,6 +64,6 @@ class Work(db.Model):
             'volume': self.volume,
             'worker': self.worker,
             'priceValue': self.price_value,
-            'parameterValues': self.parameter_values,
+            'parameters': self.parameter_values,
             'workType': self.type
         }

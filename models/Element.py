@@ -44,5 +44,5 @@ class Element(db.Model):
             'id': self.id,
             'count': self.count,
             'elementType': self.type,
-            'parameterValues': self.parameter_values
+            'parameters': self.parameter_values
         }

@@ -52,7 +52,9 @@ class Document(db.Model):
     def to_view_json(self):
         return {
             'id': self.id,
-            'name': self.name
+            'name': self.name,
+            'dateCreated': str(self.date_created),
+            'dateModified': str(self.date_modified)
         }
 
     def to_json(self):
