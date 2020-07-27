@@ -63,6 +63,8 @@ class WorkType(db.Model):
 
     formula = db.relationship('Formula')
 
+    categories = db.relationship('Category', secondary='WorkTypeCategories')
+
     def to_json(self):
         return {
             'id': self.id,
@@ -74,7 +76,8 @@ class WorkType(db.Model):
             'order': self.order,
             'descriptions': self.description,
             'materialsCount': self.materials_count,
-            'formula': self.formula
+            'formula': self.formula,
+            'categories': list(map(lambda c: c.id, self.categories))
         }
 
 

@@ -5,19 +5,37 @@ from sqlalchemy.orm import relationship
 class Category(db.Model):
     __tablename__ = 'Categories'
 
-    Id = db.Column(db.Integer, primary_key=True)
-    Order = db.Column(db.Integer, nullable=False)
-    Name = db.Column(db.Unicode)
-    Parent_Id = db.Column(db.ForeignKey('Categories.Id'), index=True)
+    id = db.Column(
+        db.Integer,
+        name='Id',
+        primary_key=True
+    )
 
-    parent = relationship('Category', remote_side=[Id])
-    WorkTypes = relationship('WorkType', secondary='WorkTypeCategories')
+    order = db.Column(
+        db.Integer,
+        name='Order',
+        nullable=False
+    )
+
+    name = db.Column(
+        db.Unicode,
+        name='Name'
+    )
+
+    parent_id = db.Column(
+        db.ForeignKey('Categories.Id'),
+        name='Parent_Id',
+        index=True
+    )
+
+    parent = relationship('Category', remote_side=[id])
+    work_types = relationship('WorkType', secondary='WorkTypeCategories')
 
     def to_json(self):
         return {
-            'id': self.Id,
-            'order': self.Order,
-            'name': self.Name,
-            'parentId': self.Parent_Id,
-            'workTypes': list(map(lambda wt: wt.id, self.WorkTypes))
+            'id': self.id,
+            'order': self.order,
+            'name': self.name,
+            'parentId': self.parent_id,
+            'workTypes': list(map(lambda wt: wt.id, self.work_types))
         }

@@ -8,6 +8,8 @@ from resources.element_type import ElementTypeResource
 from resources.category import CategoryResource
 from resources.room_type import RoomTypeResource
 from resources.tag import TagResource
+from resources.rooms_list import RoomsListResource
+from resources.room import RoomResource
 from routes.auth import auth_blueprint
 from flask_restful import Api
 from flask_migrate import Migrate
@@ -23,6 +25,8 @@ api = Api(app=app, prefix='/api')
 api.add_resource(DocumentsListResource, '/projects/<int:project_id>/documents')
 api.add_resource(ProjectResource, '/projects')
 api.add_resource(DocumentResource, '/documents/<int:document_id>')
+api.add_resource(RoomsListResource, '/documents/<int:document_id>/rooms')
+api.add_resource(RoomResource, '/rooms/<int:room_id>')
 api.add_resource(WorkTypeResource, '/workTypes')
 api.add_resource(ElementTypeResource, '/elementTypes')
 api.add_resource(RoomTypeResource, '/roomTypes')

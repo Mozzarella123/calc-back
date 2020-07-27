@@ -34,4 +34,10 @@ class RoomType(db.Model):
             'guid': self.guid,
             'formulas': self.formulas
         }
+
+    def to_view_json(self):
+        return {
+            'id': self.id,
+            'name': self.name
+        }
     

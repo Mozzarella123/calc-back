@@ -65,3 +65,10 @@ class Room(db.Model):
             'works': self.works,
             'elements': self.elements
         }
+
+    def to_view_json(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'type': self.room_type
+        }

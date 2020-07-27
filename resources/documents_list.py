@@ -1,5 +1,5 @@
 from flask_restful import Resource
-from models.Document import Document
+from models.MultiProject import MultiProject
 from util.json import view_output_json
 
 
@@ -11,5 +11,10 @@ class DocumentsListResource(Resource):
         }
 
     def get(self, project_id):
-        return Document.query.filter(Document.MultiProject_Id == project_id).all()
+        project = MultiProject.query.get(project_id)
+
+        if project is None:
+            return {'message': 'Project with this id not found.'}, 404
+
+        return project.documents
 
