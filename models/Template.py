@@ -5,5 +5,5 @@ class Template(db.Model):
     __tablename__ = 'Templates'
 
     Id = db.Column(db.Integer, primary_key=True)
-    Name = db.Column(db.Unicode)
-    Content = db.Column(db.Unicode)
+    Name = db.Column(db.String(255))
+    Content = db.Column(db.Text)

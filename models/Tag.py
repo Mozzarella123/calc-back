@@ -6,7 +6,7 @@ class Tag(db.Model):
     __tablename__ = 'Tags'
 
     Id = db.Column(db.Integer, primary_key=True)
-    Name = db.Column(db.Unicode)
+    Name = db.Column(db.String(255))
 
     WorkTypes = relationship('WorkType', secondary='TagWorkTypes')
 

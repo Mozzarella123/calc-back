@@ -26,7 +26,7 @@ class Work(db.Model):
     )
 
     worker = db.Column(
-        db.Unicode,
+        db.String(255),
         name='Worker',
         nullable=True
     )

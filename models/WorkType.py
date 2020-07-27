@@ -12,12 +12,12 @@ class WorkType(db.Model):
     )
 
     guid = db.Column(
-        db.Unicode,
+        db.String(255),
         name='GUID'
     )
 
     name = db.Column(
-        db.Unicode,
+        db.String(255),
         name='Name'
     )
 
@@ -46,12 +46,12 @@ class WorkType(db.Model):
     )
 
     description = db.Column(
-        db.Unicode,
+        db.Text,
         name='Description'
     )
 
     materials_count = db.Column(
-        db.Unicode,
+        db.Text,
         name='MaterialsCount'
     )
 

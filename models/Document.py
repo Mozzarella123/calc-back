@@ -15,7 +15,7 @@ class Document(db.Model):
     )
 
     name = db.Column(
-        db.Unicode,
+        db.String(255),
         name="Name",
         nullable=False
     )

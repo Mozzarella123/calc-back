@@ -11,18 +11,19 @@ class RoomType(db.Model):
     )
 
     name = db.Column(
-        db.Unicode,
+        db.String(255),
         name='Name'
     )
 
     guid = db.Column(
-        db.Unicode,
+        db.String(255),
         name='GUID'
     )
 
-    image = db.Column(
-        db.Binary,
-        name='Image'
+    image_path = db.Column(
+        db.String(255),
+        name='Image_Path',
+        nullable=True
     )
 
     formulas = db.relationship('Formula', back_populates='room_type')
@@ -32,6 +33,7 @@ class RoomType(db.Model):
             'id': self.id,
             'name': self.name,
             'guid': self.guid,
+            'imagePath': self.image_path,
             'formulas': self.formulas
         }
 

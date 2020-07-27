@@ -23,7 +23,7 @@ class Formula(db.Model):
     )
 
     expression = db.Column(
-        db.Unicode,
+        db.String(1024),
         name='Expression'
     )
 
