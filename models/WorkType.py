@@ -77,7 +77,7 @@ class WorkType(db.Model):
             'descriptions': self.description,
             'materialsCount': self.materials_count,
             'formula': self.formula,
-            'categories': list(map(lambda c: c.id, self.categories))
+            'categories': list(map(lambda c: {'id': c.id}, self.categories))
         }
 
 

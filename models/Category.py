@@ -36,6 +36,6 @@ class Category(db.Model):
             'id': self.id,
             'order': self.order,
             'name': self.name,
-            'parentId': self.parent_id,
+            'parent': {'id': self.parent_id},
             'workTypes': list(map(lambda wt: wt.id, self.work_types))
         }
