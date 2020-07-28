@@ -79,7 +79,6 @@ class Work(db.Model):
     @classmethod
     def from_json(cls, data):
         return cls(
-            id=data.get('id', None),
             is_volume_manual=data['isVolumeManual'],
             volume=data['volume'],
             worker=data['worker'],

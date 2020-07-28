@@ -41,7 +41,6 @@ class ParameterValue(db.Model):
     @classmethod
     def from_json(cls, data):
         return cls(
-            id=data.get('id', None),
             value=data['value'],
             parameter=Parameter.from_json(data['parameter'])
         )

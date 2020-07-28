@@ -92,7 +92,6 @@ class Room(db.Model):
     @classmethod
     def from_json(cls, data):
         return cls(
-            id=data.get('id', None),
             name=data['name'],
             factor=data['factor'],
             salary_factor=data['salaryFactor'],

@@ -60,7 +60,6 @@ class Element(db.Model):
     @classmethod
     def from_json(cls, data):
         return cls(
-            id=data.get('id', None),
             count=data['count'],
             element_type_id=data['elementType'],
             parameter_values=list(map(ParameterValue.from_json, data['parameters']))

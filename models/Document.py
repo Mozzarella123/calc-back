@@ -83,7 +83,6 @@ class Document(db.Model):
     @classmethod
     def from_json(cls, data):
         return cls(
-            id=data.get('id', None),
             name=data['name'],
             type=data['documentType'],
             rooms=list(map(Room.from_json, data['rooms']))
