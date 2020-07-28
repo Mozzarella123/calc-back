@@ -27,3 +27,16 @@ class DocumentResource(Resource):
         session.close()
 
         return 'ok', 201
+
+    def delete(self, document_id):
+        session = db.create_scoped_session()
+        document = session.query(Document).get(document_id)
+
+        if document is None:
+            return {'message': 'Document not found'}, 404
+
+        session.delete(document)
+        session.commit()
+        session.close()
+
+        return 'ok', 200
