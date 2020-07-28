@@ -22,3 +22,9 @@ class MultiProject(db.Model):
             'id': self.id,
             'name': self.name
         }
+
+    @classmethod
+    def from_json(cls, data):
+        return cls(
+            name=data['name']
+        )

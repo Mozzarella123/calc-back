@@ -61,7 +61,8 @@ class Document(db.Model):
             'id': self.id,
             'name': self.name,
             'dateCreated': str(self.date_created),
-            'dateModified': str(self.date_modified)
+            'dateModified': str(self.date_modified),
+            'documentType': self.type
         }
 
     def to_json(self):
