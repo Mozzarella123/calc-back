@@ -25,8 +25,8 @@ api_url_prefix = '/api'
 db.init_app(app)
 
 api = Api(app=app, prefix=api_url_prefix)
-api.add_resource(DocumentsListResource, '/projects/<int:project_id>/documents')
 api.add_resource(ProjectResource, '/projects')
+api.add_resource(DocumentsListResource, '/projects/<int:project_id>/documents')
 api.add_resource(DocumentResource, '/documents/<int:document_id>')
 api.add_resource(RoomsListResource, '/documents/<int:document_id>/rooms')
 api.add_resource(RoomResource, '/rooms/<int:room_id>')
