@@ -29,6 +29,7 @@ class DocumentsListResource(Resource):
             return {'message': 'Project with this id not found.'}, 404
 
         document = Document.from_json(request.json)
+        document.project_id = project_id
         session.add(document)
         session.commit()
 
