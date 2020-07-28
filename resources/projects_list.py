@@ -5,7 +5,7 @@ from util.json import output_json
 from models.db import db
 
 
-class ProjectResource(Resource):
+class ProjectsListResource(Resource):
 
     def __init__(self):
         self.representations = {
