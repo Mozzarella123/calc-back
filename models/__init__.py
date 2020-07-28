@@ -5,7 +5,7 @@ from models.Formula import Formula
 from models.MaterialType import MaterialType
 from models.MultiProject import MultiProject
 from models.ParameterFormulas import t_ParameterFormulas
-from models.Paramter import Parameter
+from models.Parameter import Parameter
 from models.RoomType import RoomType
 from models.Tag import Tag
 from models.TagWorkTypes import t_TagWorkTypes

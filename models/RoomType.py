@@ -1,4 +1,5 @@
 from models.db import db
+from models.Formula import Formula
 
 
 class RoomType(db.Model):
@@ -42,4 +43,13 @@ class RoomType(db.Model):
             'id': self.id,
             'name': self.name
         }
-    
+
+    @classmethod
+    def from_json(cls, data):
+        return cls(
+            id=data.get('id', None),
+            name=data['name'],
+            guid=data['guid'],
+            image_path=data['imagePath'],
+            formulas=list(map(Formula.from_json, data['formulas']))
+        )

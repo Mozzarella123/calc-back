@@ -46,3 +46,11 @@ class Parameter(db.Model):
             'name': self.name,
             'type': str(self.type.name)
         }
+
+    @classmethod
+    def from_json(cls, data):
+        return cls(
+            id=data.get('id', None),
+            type=ParameterType[data['type']],
+            name=data['name']
+        )

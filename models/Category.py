@@ -1,5 +1,5 @@
 from models.db import db
-from sqlalchemy.orm import relationship
+from models.WorkType import WorkType
 
 
 class Category(db.Model):
@@ -28,8 +28,8 @@ class Category(db.Model):
         index=True
     )
 
-    parent = relationship('Category', remote_side=[id])
-    work_types = relationship('WorkType', secondary='WorkTypeCategories')
+    parent = db.relationship('Category', remote_side=[id])
+    work_types = db.relationship('WorkType', secondary='WorkTypeCategories')
 
     def to_json(self):
         return {
@@ -39,3 +39,13 @@ class Category(db.Model):
             'parent': {'id': self.parent_id},
             'workTypes': list(map(lambda wt: wt.id, self.work_types))
         }
+
+    @classmethod
+    def from_json(cls, data):
+        return cls(
+            id=data.get('id', None),
+            order=data['order'],
+            name=data['name'],
+            parent_id=data['parent'],
+            work_types=WorkType.query.filter(WorkType.id in data['workTypes'])
+        )

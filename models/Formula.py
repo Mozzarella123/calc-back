@@ -2,6 +2,7 @@ from models.db import db
 from sqlalchemy.orm import relationship
 from util.IntEnum import IntEnum
 from enum import Enum
+from models.Parameter import Parameter
 
 
 class FormulaType(Enum):
@@ -56,3 +57,12 @@ class Formula(db.Model):
             'type': str(self.type.name),
             'parameters': self.parameters
         }
+
+    @classmethod
+    def from_json(cls, data):
+        return cls(
+            id=data.get('id', None),
+            expression=data['expression'],
+            type=FormulaType[data['type']],
+            parameters=list(map(Parameter.from_json, data['parameters']))
+        )

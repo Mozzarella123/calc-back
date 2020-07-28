@@ -1,5 +1,5 @@
 from models.db import db
-from sqlalchemy.orm import relationship
+from models.Formula import Formula
 
 
 class WorkType(db.Model):
@@ -80,4 +80,17 @@ class WorkType(db.Model):
             'categories': list(map(lambda c: {'id': c.id}, self.categories))
         }
 
-
+    @classmethod
+    def from_json(cls, data):
+        return WorkType(
+            id=data.get('id', None),
+            name=data['name'],
+            guid=data['GUID'],
+            price_value=data['priceValue'],
+            salary=data['salary'],
+            time=data['time'],
+            order=data['order'],
+            description=data['description'],
+            materials_count=data['materialsCount'],
+            formula=Formula.from_json(data['formula'])
+        )
