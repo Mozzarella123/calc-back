@@ -48,7 +48,11 @@ class Document(db.Model):
         index=True
     )
 
-    rooms = db.relationship(Room, back_populates='document')
+    rooms = db.relationship(
+        Room,
+        back_populates='document',
+        cascade="all, delete-orphan"
+    )
 
     project = relationship('MultiProject')
 

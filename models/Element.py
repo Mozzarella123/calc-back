@@ -37,7 +37,12 @@ class Element(db.Model):
 
     room = db.relationship("Room")
 
-    parameter_values = db.relationship('ParameterValue', secondary='ParameterWithValueElements')
+    parameter_values = db.relationship(
+        'ParameterValue',
+        secondary='ParameterWithValueElements',
+        single_parent=True,
+        cascade="all, delete-orphan"
+    )
 
     def to_json(self):
         return {

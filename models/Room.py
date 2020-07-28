@@ -50,11 +50,16 @@ class Room(db.Model):
 
     room_type = db.relationship('RoomType')
 
-    parameter_values = db.relationship('ParameterValue', secondary='ParameterWithValueRooms')
+    parameter_values = db.relationship(
+        'ParameterValue',
+        secondary='ParameterWithValueRooms',
+        cascade="all, delete-orphan",
+        single_parent=True
+    )
 
-    works = db.relationship('Work')
+    works = db.relationship('Work', cascade="all, delete-orphan")
 
-    elements = db.relationship('Element')
+    elements = db.relationship('Element', cascade="all, delete-orphan")
 
     def to_view_json(self):
         return {
