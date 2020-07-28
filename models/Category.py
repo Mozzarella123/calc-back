@@ -36,7 +36,7 @@ class Category(db.Model):
             'id': self.id,
             'order': self.order,
             'name': self.name,
-            'parent': {'id': self.parent_id},
+            'parent': {'id': self.parent_id} if self.parent_id is not None else None,
             'workTypes': list(map(lambda wt: wt.id, self.work_types))
         }
 
